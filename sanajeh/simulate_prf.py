@@ -91,7 +91,11 @@ def generate_population_data(model):
     SIGMA = random((N_CHAN, )) * 10 - 5
     BETA = random((N_CHAN, ))
     BASELINE = random((N_CHAN, ))
-    print(X)
+    print(abs(X).sum())
+    print(abs(Y).sum())
+    print(abs(SIGMA).sum())
+    print(abs(BETA).sum())
+    print(abs(BASELINE).sum())
 
     FREQ = 70
     t = arange(S_FREQ * DUR) / S_FREQ
@@ -99,7 +103,6 @@ def generate_population_data(model):
     dat = []
     for i in range(N_CHAN):
         i_dat = model.generate_prediction(X[i], Y[i], SIGMA[i], BETA[i], BASELINE[i])
-        print(i_dat)
         i_dat -= i_dat.min()
 
         x = i_dat[:, None] * sin(2 * pi * t * FREQ)
