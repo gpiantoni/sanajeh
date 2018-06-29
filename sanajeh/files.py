@@ -36,3 +36,13 @@ elec_ct = file_Core(
     acquisition='ct',
     extension='.tsv',
     )
+
+task_prf = file_Core(
+    subject=subject,
+    session='day03',
+    modality='ieeg',
+    task='bairprf',
+    run='1',
+    acquisition='clinical',
+    extension='.eeg',
+    )
