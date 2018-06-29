@@ -1,4 +1,5 @@
 from hashlib import md5
+from numpy import load
 import gzip
 
 
@@ -18,12 +19,17 @@ def compute_md5(p):
         f = p.open('rb')
         val = b'\n'.join(f.read().split(b'\n')[2:])
 
+    elif p.suffix == '.npy':
+        f = None
+        val = load(p).tobytes()
+
     else:
         f = p.open('rb')
         val = f.read()
 
     md5_.update(val)
-    f.close()
+    if f is not None:
+        f.close()
 
     return md5_.hexdigest()
 
