@@ -18,6 +18,14 @@ Requirements
 - bidso
 - nibabel
 
+Status
+------
+.. image:: https://travis-ci.org/gpiantoni/sanajeh.svg?branch=master
+    :target: https://travis-ci.org/gpiantoni/sanajeh
+
+.. image:: https://codecov.io/gh/gpiantoni/sanajeh/branch/master/graph/badge.svg
+    :target: https://codecov.io/gh/gpiantoni/sanajeh
+
 License
 -------
 The project is licensed under the MIT license.
