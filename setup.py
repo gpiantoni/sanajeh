@@ -10,13 +10,13 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='boavus',
+    name='sanajeh',
     version=VERSION,
-    description='Tools to analyze data structured as BIDS in Python',
+    description='Simulate fMRI and iEEG data in BIDS format',
     long_description=long_description,
-    url='https://github.com/gpiantoni/boavus',
+    url='https://github.com/gpiantoni/sanajeh',
     author="Gio Piantoni",
-    author_email='boavus@gpiantoni.com',
+    author_email='sanajeh@gpiantoni.com',
     license='MIT',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
@@ -29,7 +29,7 @@ setup(
         'Programming Language :: Python :: 3.6',
         ],
     keywords='bids',
-    packages=find_packages(exclude=('test', )),
+    packages=find_packages(exclude=('tests', )),
     install_requires=[
         'nibabel',
         'numpy',
@@ -41,9 +41,10 @@ setup(
             'codecov',
             ],
         },
-    entry_points={
-        'console_scripts': [
-            'boavus=boavus.command:boavus',
-        ],
+    package_data={
+        'sanajeh': [
+            'VERSION',
+            'data/electrodes.tsv',
+            ],
     },
     )
