@@ -1,6 +1,6 @@
-BOAVUS
-======
-Analysis of ECoG and fMRI data in Python based on BIDS
+SANAJEH
+=======
+Simulate ECoG and fMRI data in Python based on BIDS
 
 Features
 --------
@@ -10,14 +10,13 @@ Installation
 ------------
 Install won by running:
 
-    pip install boavus
+    pip install sanajeh
 
 Requirements
 ------------
 - Python 3.6
 - bidso
-- fsl
-- freesurfer
+- nibabel
 
 License
 -------

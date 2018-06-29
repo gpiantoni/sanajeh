@@ -19,22 +19,31 @@ cache:
    - $HOME/.cache/pip
 
 before_install:
-  - sudo apt-get update -qq
+ - sudo apt-get update -qq
 
 install:
 
-  # install requirements
-  - pip install numpy nibabel bidso
-  - pip install pytest pytest-cov codecov
-  - pip install -e .
+ # install requirements
+ - pip install numpy nibabel bidso
+ - pip install pytest pytest-cov codecov
+ - pip install -e .
 
 script:
-  - py.test --cov=sanajeh tests
-  - coverage combine  # multiprocessing
-  - find tests/simulated -type f -printf "\n%TY/%Tm/%Td %TH:%TM:%TS\t%s\n" -exec md5sum \{\} \;
+ - py.test --cov=sanajeh tests
+ - find tests/simulated -type f -printf "\n%TY/%Tm/%Td %TH:%TM:%TS\t%s\n" -exec md5sum \{\} \;
 
 after_success:
-  - codecov
+ - codecov
+ - sphinx-apidoc -fMeT -o $API_PATH bidso
+ - sphinx-build -T -b html -d $BUILD_PATH/doctrees $SOURCE_PATH $HTML_PATH
 
 notifications:
   email: false
+
+deploy:
+ - provider: pages
+   skip_cleanup: true
+   target_branch : gh-pages
+   local_dir : docs/build/html
+   repo : gpiantoni/sanajeh
+   github_token : $GITHUB_TOKEN
