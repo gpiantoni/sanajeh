@@ -9,6 +9,7 @@ Contents:
    introduction
    installation
    api
+   changelog
    todo
 
 
