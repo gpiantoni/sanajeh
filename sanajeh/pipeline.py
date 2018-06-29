@@ -1,5 +1,6 @@
 from bidso.utils import read_tsv
 
+from .bids import simulate_bids
 from .anat import simulate_anat
 from .fmri import simulate_bold
 from .ieeg import simulate_ieeg, simulate_electrodes
@@ -8,6 +9,8 @@ from .data import data_t1, data_elec
 
 
 def simulate_all(ROOT_DIR):
+    simulate_bids(ROOT_DIR)
+
     elec = read_tsv(data_elec)
     simulate_ieeg(ROOT_DIR, task_ieeg, elec)
     simulate_electrodes(ROOT_DIR, elec_ct)
