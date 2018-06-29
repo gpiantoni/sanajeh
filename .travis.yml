@@ -30,6 +30,7 @@ install:
  - pip install -e .
 
 script:
+ - python showplot.py
  - py.test --cov=sanajeh tests
  - find tests/simulated -type f -printf "\n%TY/%Tm/%Td %TH:%TM:%TS\t%s\n" -exec md5sum \{\} \;
 
