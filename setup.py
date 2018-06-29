@@ -32,7 +32,7 @@ setup(
     install_requires=[
         'bidso',
         'nibabel',
-        'numpy',
+        'wonambi',
         ],
     extras_require={
         'test': [  # to run tests
