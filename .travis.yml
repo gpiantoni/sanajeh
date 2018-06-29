@@ -35,7 +35,7 @@ script:
 after_success:
  - codecov
  - pip install sphinx sphinx_rtd_theme
- - sphinx-apidoc -fMeT -o $API_PATH bidso
+ - sphinx-apidoc -fMeT -o $API_PATH sanajeh
  - sphinx-build -T -b html -d $BUILD_PATH/doctrees $SOURCE_PATH $HTML_PATH
 
 notifications:
