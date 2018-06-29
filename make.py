@@ -7,6 +7,9 @@ from shutil import rmtree
 from subprocess import run
 from sys import exit
 
+from tests.test_99_hash import write_hash
+
+
 PACKAGE = 'sanajeh'
 
 parser = ArgumentParser(prog='make',
@@ -15,6 +18,8 @@ parser.add_argument('-r', '--release', action='store_true',
                     help='create a point release')
 parser.add_argument('-m', '--major_release', action='store_true',
                     help='create a major release')
+parser.add_argument('-u', '--update_hash', action='store_true',
+                    help='update hash md5 values for generated files')
 parser.add_argument('-t', '--tests', action='store_true',
                     help='run tests')
 parser.add_argument('-d', '--docs', action='store_true',
@@ -125,6 +130,11 @@ def _release(level):
              ])
 
 
+def _update_hash():
+    write_hash()
+    return 0
+
+
 def _tests():
     CMD = ['pytest',
            f'--cov={PACKAGE}',
@@ -175,6 +185,9 @@ if __name__ == '__main__':
 
     if args.clean:
         _clean_all()
+
+    if args.update_hash:
+        returncode = _update_hash()
 
     if args.tests:
         returncode = _tests()
