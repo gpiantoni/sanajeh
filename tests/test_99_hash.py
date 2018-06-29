@@ -12,7 +12,8 @@ def test_files_on_disk():
                 raise ValueError(f'{filename} not in the md5 list')
 
             elif compute_md5(p) != md5_dict.pop(filename):
-                raise ValueError(f'hash of {filename} does not match stored value')
+                x = p.open('rb').read(100)
+                raise ValueError(f'hash of {filename} does not match stored value\n{x}')
 
     for filename in md5_dict.keys():
         raise ValueError(f'{filename} in the md5 list but not on disk')
