@@ -2,8 +2,7 @@
 docs/build/
 docs/source/api/
 
-tests/data/
-tests/parameters/
+tests/simulated/
 
 .coverage
 htmlcov/

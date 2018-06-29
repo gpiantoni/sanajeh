@@ -42,6 +42,11 @@ notifications:
   email: false
 
 deploy:
+ - provider: pypi
+   user: $PYPI_USER
+   password: $PYPI_PASSWORD
+   on:
+     tags: true
  - provider: pages
    skip_cleanup: true
    target_branch : gh-pages
