@@ -33,6 +33,7 @@ setup(
         'bidso',
         'nibabel',
         'wonambi',
+        'popeye',
         ],
     extras_require={
         'test': [  # to run tests
