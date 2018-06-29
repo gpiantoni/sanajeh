@@ -1,7 +1,6 @@
 from ctypes import c_int16
 from wonambi import Data
 from wonambi.utils.simulate import _make_chan_name
-from datetime import datetime
 from numpy import (append,
                    arange,
                    array,
@@ -16,6 +15,8 @@ from bidso.utils import replace_underscore
 
 from popeye.visual_stimulus import VisualStimulus, simulate_bar_stimulus
 from popeye.og import GaussianModel
+
+from .ieeg import fake_time
 
 
 S_FREQ = 500
@@ -39,7 +40,7 @@ def simulate_prf(bids_dir, task_prf):
     chan = _make_chan_name(n_chan=N_CHAN)
     data = Data(data=dat, s_freq=S_FREQ, chan=chan, time=arange(dat[0].shape[0]) / S_FREQ)
 
-    data.start_time = datetime.now()
+    data.start_time = fake_time
     data.export(prf_file, 'bids')
 
     create_prf_events(replace_underscore(prf_file, 'events.tsv'), bars.shape[2])
