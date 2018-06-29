@@ -7,7 +7,8 @@ from shutil import rmtree
 from subprocess import run
 from sys import exit
 
-from tests.test_99_hash import write_hash
+from tests.utils import write_hash
+from tests.paths import HASH_PATH
 
 
 PACKAGE = 'sanajeh'
@@ -131,7 +132,7 @@ def _release(level):
 
 
 def _update_hash():
-    write_hash()
+    write_hash(SIMULATED_PATH, HASH_PATH)
     return 0
 
 
