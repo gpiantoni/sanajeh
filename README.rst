@@ -16,6 +16,7 @@ Requirements
 ------------
 - Python 3.6
 - bidso
+- wonambi
 - nibabel
 
 Status

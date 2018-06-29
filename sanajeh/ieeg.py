@@ -1,7 +1,6 @@
 from json import dump
 from datetime import datetime
 from shutil import copyfile
-from pathlib import Path
 from numpy import ones, r_, arange
 from numpy import random
 
@@ -9,10 +8,10 @@ from wonambi import Data
 
 from bidso.objects import Electrodes, iEEG
 from bidso.utils import replace_underscore, replace_extension, bids_mkdir
+
+from .data import data_elec
 from .fmri import create_events
 
-
-DATA_PATH = Path(__file__).resolve().parent / 'data'
 
 S_FREQ = 256
 DURATION = 192
@@ -46,7 +45,7 @@ def simulate_electrodes(root, elec_obj, electrodes_file=None):
     bids_mkdir(root, elec_obj)
 
     if electrodes_file is None:
-        electrodes_file = DATA_PATH / 'electrodes.tsv'
+        electrodes_file = data_elec
     output_file = elec_obj.get_filename(root)
     copyfile(electrodes_file, output_file)
 
