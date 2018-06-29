@@ -31,6 +31,7 @@ setup(
     keywords='bids',
     packages=find_packages(exclude=('tests', )),
     install_requires=[
+        'bidso',
         'nibabel',
         'numpy',
         ],
