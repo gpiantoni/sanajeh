@@ -88,25 +88,19 @@ def generate_model(stimulus):
 def generate_population_data(model):
     seed(1)
     # generate a random pRF estimate
-    X = random((N_CHAN, )) * 10 - 5
-    Y = random((N_CHAN, )) * 10 - 5
-    SIGMA = random((N_CHAN, )) * 10 - 5
-    BETA = random((N_CHAN, ))
-    BASELINE = random((N_CHAN, ))
-    print(abs(X).sum())
-    print(abs(Y).sum())
-    print(abs(SIGMA).sum())
-    print(abs(BETA).sum())
-    print(abs(BASELINE).sum())
+    X = 10
+    Y = 10
+    SIGMA = 2
+    BETA = 1
+    BASELINE = 0
 
     FREQ = 70
     t = arange(S_FREQ * DUR) / S_FREQ
 
     dat = []
     for i in range(N_CHAN):
-        i_dat = model.generate_prediction(X[i], Y[i], SIGMA[i], BETA[i], BASELINE[i])
+        i_dat = model.generate_prediction(X, Y, SIGMA, BETA, BASELINE, unscaled=True)
         print(i_dat[:10])
-        print(i_dat[-10:])
         i_dat -= i_dat.min()
 
         x = i_dat[:, None] * sin(2 * pi * t * FREQ)
