@@ -36,6 +36,7 @@ def simulate_prf(bids_dir, task_prf):
     stimulus = generate_stimulus(bars)
     model = generate_model(stimulus)
     dat = generate_population_data(model)
+    assert False, print(abs(dat).sum())
 
     chan = _make_chan_name(n_chan=N_CHAN)
     data = Data(data=dat, s_freq=S_FREQ, chan=chan, time=arange(dat[0].shape[0]) / S_FREQ)
