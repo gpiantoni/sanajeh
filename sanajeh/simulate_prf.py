@@ -105,6 +105,8 @@ def generate_population_data(model):
     dat = []
     for i in range(N_CHAN):
         i_dat = model.generate_prediction(X[i], Y[i], SIGMA[i], BETA[i], BASELINE[i])
+        print(i_dat[:10])
+        print(i_dat[-10:])
         i_dat -= i_dat.min()
 
         x = i_dat[:, None] * sin(2 * pi * t * FREQ)
