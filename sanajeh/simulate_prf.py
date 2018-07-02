@@ -98,7 +98,7 @@ def generate_population_data(model):
 
     dat = []
     for i in range(N_CHAN):
-        i_dat = model.generate_prediction(X, Y, SIGMA, BETA, BASELINE, unscaled=True)
+        i_dat = model.generate_prediction(X, Y, SIGMA, BETA, BASELINE)
         print(abs(i_dat).sum())
         i_dat -= i_dat.min()
 
