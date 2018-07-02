@@ -15,7 +15,7 @@ sub-bert/ses-day02/ieeg/sub-bert_ses-day02_task-block_run-1_acq-clinical_ieeg.vh
 sub-bert/ses-day02/ieeg/sub-bert_ses-day02_task-block_run-1_acq-clinical_ieeg.vmrk	04ce8e4e838ba1dfd409607177647d20
 sub-bert/ses-day03/ieeg/sub-bert_ses-day03_task-bairprf_run-1_acq-clinical_channels.tsv	0acb1d003a90737bc47e12bb48e432ba
 sub-bert/ses-day03/ieeg/sub-bert_ses-day03_task-bairprf_run-1_acq-clinical_events.tsv	d0f702dab089b6e1cd6c4e248ac4a6e0
-sub-bert/ses-day03/ieeg/sub-bert_ses-day03_task-bairprf_run-1_acq-clinical_ieeg.eeg	1482445bb14b651afb63a3643e5d5935
+sub-bert/ses-day03/ieeg/sub-bert_ses-day03_task-bairprf_run-1_acq-clinical_ieeg.eeg	100df2855aa7a3b3449c97e0e6bc29b8
 sub-bert/ses-day03/ieeg/sub-bert_ses-day03_task-bairprf_run-1_acq-clinical_ieeg.json	44b2f989b17652fb66c41c82adf005c4
 sub-bert/ses-day03/ieeg/sub-bert_ses-day03_task-bairprf_run-1_acq-clinical_ieeg.vhdr	158e6473fb64bc4cb206ced9846f6a7e
 sub-bert/ses-day03/ieeg/sub-bert_ses-day03_task-bairprf_run-1_acq-clinical_ieeg.vmrk	567df142a70723eed57ec40b4e93d058
