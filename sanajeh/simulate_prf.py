@@ -12,9 +12,11 @@ from numpy import (append,
                    )
 from numpy.random import seed, random
 from bidso.utils import replace_underscore
+import numpy as np
 
 from popeye.visual_stimulus import VisualStimulus, simulate_bar_stimulus
 from popeye.og import GaussianModel
+from popeye import og
 
 from .ieeg import fake_time
 
@@ -88,18 +90,42 @@ def generate_model(stimulus):
 def generate_population_data(model):
     seed(1)
     # generate a random pRF estimate
-    X = 10
-    Y = 10
-    SIGMA = 2
-    BETA = 1
+    x = 10
+    y = 10
+    sigma = 2
+    beta = 1
     BASELINE = 0
 
     FREQ = 70
     t = arange(S_FREQ * DUR) / S_FREQ
 
+    self = model
+    # mask for speed
+    mask = self.distance_mask(x, y, sigma)
+    print(mask.max())
+
+    # generate the RF
+    rf = og.generate_og_receptive_field(x, y, sigma, self.stimulus.deg_x, self.stimulus.deg_y)
+    rf /= (2 * np.pi * sigma**2) * 1/np.diff(self.stimulus.deg_x[0,0:2])**2
+    print(rf.max())
+
+    # extract the stimulus time-series
+    response = og.generate_rf_timeseries(self.stimulus.stim_arr, rf, mask)
+    print(response.max())
+
+    # convolve it with the stimulus
+    idat = og.fftconvolve(response, self.hrf())[0:len(response)]
+    print(idat.max())
+
+    # units
+    model = self.normalizer(model)
+    print(idat.max())
+
+
+
     dat = []
     for i in range(N_CHAN):
-        i_dat = model.generate_prediction(X, Y, SIGMA, BETA, BASELINE, unscaled=True)
+        i_dat = model.generate_prediction(x, y, sigma, beta, BASELINE, unscaled=True)
         print(i_dat[:10])
         i_dat -= i_dat.min()
 
