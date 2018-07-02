@@ -26,7 +26,6 @@ install:
  # install requirements
  - pip install Cython
  - pip install wonambi nibabel bidso popeye
- - pip install -e git+https://github.com/kdesimone/popeye.git#egg=popeye
  - pip install pytest pytest-cov codecov
  - pip install -e .
 
