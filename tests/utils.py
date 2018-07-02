@@ -1,5 +1,6 @@
 from hashlib import md5
 from numpy import load
+from wonambi import Dataset
 import gzip
 
 
@@ -18,6 +19,10 @@ def compute_md5(p):
         # skip first two lines because it contains the time the file was written
         f = p.open('rb')
         val = b'\n'.join(f.read().split(b'\n')[2:])
+
+    elif p.suffix == '.eeg':
+        f = None
+        val = Dataset(p).read_data().data[0].astype(int).tobytes()
 
     elif p.suffix == '.npy':
         f = None
