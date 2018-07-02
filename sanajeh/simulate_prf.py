@@ -39,6 +39,7 @@ def simulate_prf(bids_dir, task_prf):
 
     chan = _make_chan_name(n_chan=N_CHAN)
     data = Data(data=dat, s_freq=S_FREQ, chan=chan, time=arange(dat[0].shape[0]) / S_FREQ)
+    print((abs(data.data[0]).flatten()).sum())
 
     data.start_time = fake_time
     data.export(prf_file, 'bids')
@@ -86,18 +87,19 @@ def generate_model(stimulus):
 def generate_population_data(model):
     seed(1)
     # generate a random pRF estimate
-    X = random((N_CHAN, )) * 10 - 5
-    Y = random((N_CHAN, )) * 10 - 5
-    SIGMA = random((N_CHAN, )) * 10 - 5
-    BETA = random((N_CHAN, ))
-    BASELINE = random((N_CHAN, ))
+    X = 10
+    Y = 10
+    SIGMA = 2
+    BETA = 1
+    BASELINE = 0
 
     FREQ = 70
     t = arange(S_FREQ * DUR) / S_FREQ
 
     dat = []
     for i in range(N_CHAN):
-        i_dat = model.generate_prediction(X[i], Y[i], SIGMA[i], BETA[i], BASELINE[i])
+        i_dat = model.generate_prediction(X, Y, SIGMA, BETA, BASELINE, unscaled=True)
+        print(abs(i_dat).sum())
         i_dat -= i_dat.min()
 
         x = i_dat[:, None] * sin(2 * pi * t * FREQ)

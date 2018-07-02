@@ -25,11 +25,13 @@ install:
 
  # install requirements
  - pip install Cython
- - pip install wonambi nibabel bidso popeye
+ - pip install wonambi nibabel bidso
+ - pip install -e git+https://github.com/kdesimone/popeye.git#egg=popeye
  - pip install pytest pytest-cov codecov
  - pip install -e .
 
 script:
+ - python showplot.py
  - py.test --cov=sanajeh tests
  - find tests/simulated -type f -printf "\n%TY/%Tm/%Td %TH:%TM:%TS\t%s\n" -exec md5sum \{\} \;
 
