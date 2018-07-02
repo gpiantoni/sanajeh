@@ -13,6 +13,7 @@ from numpy import (append,
 from numpy.random import seed, random
 from bidso.utils import replace_underscore
 import numpy as np
+import popeye.utilities as utils
 
 from popeye.visual_stimulus import VisualStimulus, simulate_bar_stimulus
 from popeye.og import GaussianModel
@@ -118,9 +119,8 @@ def generate_population_data(model):
     print(idat.max())
 
     # units
-    model = self.normalizer(model)
+    idat = utils.percent_change(idat)
     print(idat.max())
-
 
 
     dat = []
