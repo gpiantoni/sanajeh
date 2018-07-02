@@ -9,13 +9,13 @@ sub-bert/ses-day02/ieeg/sub-bert_ses-day02_acq-ct_coordsystem.json	578c9f2443bb3
 sub-bert/ses-day02/ieeg/sub-bert_ses-day02_acq-ct_electrodes.tsv	bbb456de9a4a06d9e17049c12126e458
 sub-bert/ses-day02/ieeg/sub-bert_ses-day02_task-block_run-1_acq-clinical_channels.tsv	89a0ae056829cb6ebc7fb6ee9a83c4b2
 sub-bert/ses-day02/ieeg/sub-bert_ses-day02_task-block_run-1_acq-clinical_events.tsv	f088f18c58657f5a7d7fc401ac1d45ae
-sub-bert/ses-day02/ieeg/sub-bert_ses-day02_task-block_run-1_acq-clinical_ieeg.eeg	a9b01e62d2cc163b1e4172d701903b29
+sub-bert/ses-day02/ieeg/sub-bert_ses-day02_task-block_run-1_acq-clinical_ieeg.eeg	df3561288c463dfd91f57bed2a7bac00
 sub-bert/ses-day02/ieeg/sub-bert_ses-day02_task-block_run-1_acq-clinical_ieeg.json	8e3d86ed6e0d260e0ed34b72b646f297
 sub-bert/ses-day02/ieeg/sub-bert_ses-day02_task-block_run-1_acq-clinical_ieeg.vhdr	07b271106c57b3b74be5c05a4f2f36d5
 sub-bert/ses-day02/ieeg/sub-bert_ses-day02_task-block_run-1_acq-clinical_ieeg.vmrk	04ce8e4e838ba1dfd409607177647d20
 sub-bert/ses-day03/ieeg/sub-bert_ses-day03_task-bairprf_run-1_acq-clinical_channels.tsv	0acb1d003a90737bc47e12bb48e432ba
 sub-bert/ses-day03/ieeg/sub-bert_ses-day03_task-bairprf_run-1_acq-clinical_events.tsv	d0f702dab089b6e1cd6c4e248ac4a6e0
-sub-bert/ses-day03/ieeg/sub-bert_ses-day03_task-bairprf_run-1_acq-clinical_ieeg.eeg	6b50d23ed2cd649442289058571388cf
+sub-bert/ses-day03/ieeg/sub-bert_ses-day03_task-bairprf_run-1_acq-clinical_ieeg.eeg	a51e8ddeac0d09de6508c0fab7607fa2
 sub-bert/ses-day03/ieeg/sub-bert_ses-day03_task-bairprf_run-1_acq-clinical_ieeg.json	44b2f989b17652fb66c41c82adf005c4
 sub-bert/ses-day03/ieeg/sub-bert_ses-day03_task-bairprf_run-1_acq-clinical_ieeg.vhdr	158e6473fb64bc4cb206ced9846f6a7e
 sub-bert/ses-day03/ieeg/sub-bert_ses-day03_task-bairprf_run-1_acq-clinical_ieeg.vmrk	567df142a70723eed57ec40b4e93d058
