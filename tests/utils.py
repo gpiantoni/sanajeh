@@ -22,7 +22,7 @@ def compute_md5(p):
 
     elif p.suffix == '.eeg':
         f = None
-        val = Dataset(p).read_data().data[0].astype(float).tobytes()
+        val = Dataset(p).read_data().data[0].astype(int).tobytes()
 
     elif p.suffix == '.npy':
         f = None
