@@ -1,5 +1,6 @@
 from json import dump
-from numpy import NaN, ones, r_, stack, random
+from numpy import array, NaN, ones, r_, stack, random
+from scipy.ndimage import geometric_transform
 
 from nibabel import Nifti1Image
 from nibabel import load as nload
@@ -62,3 +63,29 @@ def create_events(tsv_file):
             trial_type = 'move' if is_move else 'rest'
             is_move = not is_move
             f.write(f'{i * DUR}\t{DUR}\t{trial_type}\n')
+
+
+def todo():
+    img = nload('/home/gio/tools/freesurfer/subjects/bert/mri/aparc.a2009s+aseg.mgz')
+    nii = img.get_data()
+    brain = zeros(nii.shape)
+    brain[nii > 111000] = 1
+    brain = downsample(brain, img.affine, 4)
+
+    act = zeros(nii.shape)
+    index_a2009s = 11129  # ctx_lh_G_precentral
+    act[nii == index_a2009s] = 1
+    act = downsample(act, img.affine, 4)
+
+
+def downsample(dat, affine, ratio, MIN=0.5):
+
+    dat = geometric_transform(dat, lambda x: x * ratio)
+    dat[dat > MIN] = 1
+    dat[dat <= MIN] = 0
+    af = affine.copy()
+    af[:3, :3] *= ratio
+    af[:3, 3] += sum(affine[:3, :3], axis=1) * (ratio / 2 - 1 / 2)
+
+    ix, iy, iz = array(dat.shape) // ratio
+    return Nifti1Image(dat[:ix, :iy, :iz], af)
