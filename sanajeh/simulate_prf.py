@@ -10,13 +10,14 @@ from numpy import (append,
                    sin,
                    tan,
                    )
-from numpy.random import seed, random
 from bidso.utils import replace_underscore
 
 from popeye.visual_stimulus import VisualStimulus, simulate_bar_stimulus
 from popeye.og import GaussianModel
+from popeye.utilities import spm_hrf
 
 from .ieeg import fake_time
+from .fmri import create_bold
 
 
 S_FREQ = 500
@@ -29,17 +30,32 @@ N_PIXELS = 100
 VIEWING_DISTANCE = SCREEN_WIDTH / (tan(pi / 360 * N_PIXELS) * 2)
 
 
-def simulate_prf(bids_dir, task_prf):
+def simulate_bold_prf(bids_dir, task_prf):
+    prf_file = task_prf.get_filename(bids_dir)
+    prf_file.parent.mkdir(exist_ok=True, parents=True)
+    bars = generate_bars()
+    stimulus = generate_stimulus(bars)
+    model = generate_model(stimulus, spm_hrf)
+    X = -2
+    Y = 2
+    SIGMA = 2
+    BETA = 1
+    BASELINE = 0
+    dat = model.generate_prediction(X, Y, SIGMA, BETA, BASELINE)
+
+    create_bold(prf_file, task_prf.task, 11143, dat)
+
+
+def simulate_ieeg_prf(bids_dir, task_prf):
     prf_file = task_prf.get_filename(bids_dir)
 
     bars = generate_bars()
     stimulus = generate_stimulus(bars)
-    model = generate_model(stimulus)
-    dat = generate_population_data(model)
+    model = generate_model(stimulus, nohrf)
+    dat = generate_population_data(model, N_CHAN)
 
     chan = _make_chan_name(n_chan=N_CHAN)
     data = Data(data=dat, s_freq=S_FREQ, chan=chan, time=arange(dat[0].shape[0]) / S_FREQ)
-    print((abs(data.data[0]).flatten()).sum())
 
     data.start_time = fake_time
     data.export(prf_file, 'bids')
@@ -77,15 +93,14 @@ def nohrf(*args):
     return array([1, ])
 
 
-def generate_model(stimulus):
-    model = GaussianModel(stimulus, nohrf)
+def generate_model(stimulus, hrf_func):
+    model = GaussianModel(stimulus, hrf_func)
     model.hrf_delay = 0
     model.mask_size = 6
     return model
 
 
-def generate_population_data(model):
-    seed(1)
+def generate_population_data(model, n_chan):
     # generate a random pRF estimate
     X = 10
     Y = 10
@@ -97,9 +112,8 @@ def generate_population_data(model):
     t = arange(S_FREQ * DUR) / S_FREQ
 
     dat = []
-    for i in range(N_CHAN):
+    for i in range(n_chan):
         i_dat = model.generate_prediction(X, Y, SIGMA, BETA, BASELINE)
-        print(abs(i_dat).sum())
         i_dat -= i_dat.min()
 
         x = i_dat[:, None] * sin(2 * pi * t * FREQ)

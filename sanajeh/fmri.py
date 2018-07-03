@@ -8,33 +8,38 @@ from nibabel import load as nload
 from bidso.objects import Task
 from bidso.utils import replace_extension, replace_underscore, bids_mkdir
 
+from .data import data_aparc
 
-def simulate_bold(root, task_fmri, aparc_file):
+
+def simulate_bold(root, task_fmri):
     bids_mkdir(root, task_fmri)
-    aparc = nload(str(aparc_file))
 
     fmri_file = task_fmri.get_filename(root)
-    create_bold(aparc, fmri_file, task_fmri.task)
+    SHIFT = 3
+    x = r_[ones(SHIFT), ones(16) * 5, ones(16), ones(16) * 5, ones(16), ones(16) * 5, ones(16 - SHIFT)]
+
+    create_bold(fmri_file, task_fmri.task, 11129, x)
+
     create_events(replace_underscore(fmri_file, 'events.tsv'))
 
     return Task(fmri_file)
 
 
-def create_bold(mri, bold_file, taskname):
+def create_bold(bold_file, taskname, region_idx, timeseries):
 
-    brain = select_region(mri, lambda x: x > 0)
-    act = select_region(mri, lambda x: x == 11129)
+    aparc = nload(str(data_aparc))
 
-    SHIFT = 3
-    x = r_[ones(SHIFT), ones(16) * 5, ones(16), ones(16) * 5, ones(16), ones(16) * 5, ones(16 - SHIFT)]
-    t = x.shape[0]
+    brain = select_region(aparc, lambda x: x > 0)
+    act = select_region(aparc, lambda x: x == region_idx)
 
-    idx = where(brain.get_data() == 1)
+    t = timeseries.shape[0]
+
     random.seed(100)
+    idx = where(brain.get_data() == 1)
     r = random.randn(idx[0].shape[0], t)
 
     bold = zeros(brain.get_data().shape + (t, ))
-    bold[act.get_data() == 1, :] = x
+    bold[act.get_data() == 1, :] = timeseries
     bold[idx] += r
 
     TR = 2.

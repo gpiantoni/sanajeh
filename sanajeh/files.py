@@ -37,9 +37,18 @@ elec_ct = file_Core(
     extension='.tsv',
     )
 
-task_prf = file_Core(
+task_fmri_prf = file_Core(
     subject=subject,
     session='day03',
+    modality='bold',
+    task='bairprf',
+    run='1',
+    extension='.nii.gz',
+    )
+
+task_ieeg_prf = file_Core(
+    subject=subject,
+    session='day04',
     modality='ieeg',
     task='bairprf',
     run='1',
