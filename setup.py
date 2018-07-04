@@ -47,6 +47,7 @@ setup(
             'VERSION',
             'data/electrodes.tsv',
             'data/anat/T1.mgz',
+            'data/anat/aparc.a2009s+aseg.mgz',
             ],
     },
     )

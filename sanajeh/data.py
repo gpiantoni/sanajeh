@@ -1,3 +1,5 @@
+"""Remember to update setup.py to include the dataset into pip
+"""
 from pathlib import Path
 
 
