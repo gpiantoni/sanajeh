@@ -5,13 +5,6 @@ python:
 
 env:
   global:
-    - DOWNLOADS=$HOME/downloads
-    - LIB=$HOME/lib
-    - DERIVATIVES=tests/data/derivatives
-    - INSTALL=$HOME/bin
-    - SOURCE_PATH=$TRAVIS_BUILD_DIR/docs/source
-    - API_PATH=$SOURCE_PATH/api
-    - BUILD_PATH=$TRAVIS_BUILD_DIR/docs/build
     - HTML_PATH=$TRAVIS_BUILD_DIR/docs/build/html
 
 cache: 
@@ -31,14 +24,13 @@ install:
  - pip install -e .
 
 script:
- - py.test --cov=sanajeh tests
+ - ./make.py --tests
  - find tests/simulated -type f -printf "\n%TY/%Tm/%Td %TH:%TM:%TS\t%s\n" -exec md5sum \{\} \;
 
 after_success:
  - codecov
  - pip install sphinx sphinx_rtd_theme
- - sphinx-apidoc -fMeT -o $API_PATH sanajeh
- - sphinx-build -T -b html -d $BUILD_PATH/doctrees $SOURCE_PATH $HTML_PATH
+ - ./make.py --docs
 
 notifications:
   email: false
@@ -52,6 +44,6 @@ deploy:
  - provider: pages
    skip_cleanup: true
    target_branch : gh-pages
-   local_dir : docs/build/html
+   local_dir : $HTML_PATH
    repo : gpiantoni/sanajeh
    github_token : $GITHUB_TOKEN
