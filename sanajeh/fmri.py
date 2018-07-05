@@ -10,6 +10,8 @@ from bidso.utils import replace_extension, replace_underscore, bids_mkdir
 
 from .data import data_aparc
 
+TR = 2.
+
 
 def simulate_bold(root, task_fmri):
     bids_mkdir(root, task_fmri)
@@ -41,8 +43,6 @@ def create_bold(bold_file, taskname, region_idx, timeseries):
     bold = zeros(brain.get_data().shape + (t, ))
     bold[act.get_data() == 1, :] = timeseries
     bold[idx] += r
-
-    TR = 2.
 
     nifti = Nifti1Image(bold.astype('float32'), brain.affine)
     nifti.header['pixdim'][4] = TR

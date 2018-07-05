@@ -17,7 +17,7 @@ from popeye.og import GaussianModel
 from popeye.utilities import spm_hrf
 
 from .ieeg import fake_time
-from .fmri import create_bold
+from .fmri import create_bold, TR
 
 
 S_FREQ = 500
@@ -45,6 +45,9 @@ def simulate_bold_prf(bids_dir, task_prf):
 
     create_bold(prf_file, task_prf.task, 11143, dat)
 
+    tsv_file = replace_underscore(prf_file, 'events.tsv')
+    create_prf_events(tsv_file, bars.shape[2], TR)
+
 
 def simulate_ieeg_prf(bids_dir, task_prf):
     prf_file = task_prf.get_filename(bids_dir)
@@ -60,7 +63,8 @@ def simulate_ieeg_prf(bids_dir, task_prf):
     data.start_time = fake_time
     data.export(prf_file, 'bids')
 
-    create_prf_events(replace_underscore(prf_file, 'events.tsv'), bars.shape[2])
+    tsv_file = replace_underscore(prf_file, 'events.tsv')
+    create_prf_events(tsv_file, bars.shape[2], DUR)
 
     stimuli_dir = bids_dir / 'stimuli'
     stimuli_dir.mkdir(exist_ok=True, parents=True)
@@ -122,9 +126,9 @@ def generate_population_data(model, n_chan):
     return array(dat)
 
 
-def create_prf_events(tsv_file, n_events):
+def create_prf_events(tsv_file, n_events, dur):
 
     with tsv_file.open('w') as f:
         f.write('onset\tduration\ttrial_type\tstim_file\tstim_file_index\n')
         for i in range(n_events):
-            f.write(f'{i * DUR}\t{DUR:f}\t{i + 1:d}\t{STIM_FILE}\t{i + 1:d}\n')
+            f.write(f'{i * dur}\t{dur:f}\t{i + 1:d}\t{STIM_FILE}\t{i + 1:d}\n')
