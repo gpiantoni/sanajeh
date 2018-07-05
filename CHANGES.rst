@@ -2,6 +2,7 @@ Change Log
 ==========
 Version 1
 ----------
+- **0.06**: uuse name motor
 - **0.05**: added prf events fmri"
 - **0.04**: add aparc.a2009s+aseg
 - **0.03**: generate prf
