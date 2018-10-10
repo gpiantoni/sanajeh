@@ -25,6 +25,7 @@ task_fmri = file_Core(
 task_anat = file_Core(
     subject=subject,
     session='day01',
+    acquisition='wholebrain',
     modality='T1w',
     extension='.nii.gz',
     )
