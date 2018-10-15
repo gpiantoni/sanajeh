@@ -1,7 +1,7 @@
 dataset_description.json	e3b4b8de3ece0ba9747f0b2f2c6e694d
 participants.tsv	379a7111c67283c3369bcb2b863ee7bd
 stimuli/prf.npy	4b8c4fa9241d4e6ad9b9d9584f08a327
-sub-bert/ses-day01/anat/sub-bert_ses-day01_T1w.nii.gz	6e0360ad610fbb7a891305fbc5e6d16f
+sub-bert/ses-day01/anat/sub-bert_ses-day01_acq-wholebrain_T1w.nii.gz	6e0360ad610fbb7a891305fbc5e6d16f
 sub-bert/ses-day01/func/sub-bert_ses-day01_task-motor_run-1_bold.json	584f5c3bd9ddb56d1e7b7c98505eaf87
 sub-bert/ses-day01/func/sub-bert_ses-day01_task-motor_run-1_bold.nii.gz	e3c974843bbe9c542870da247d11986a
 sub-bert/ses-day01/func/sub-bert_ses-day01_task-motor_run-1_events.tsv	f088f18c58657f5a7d7fc401ac1d45ae
