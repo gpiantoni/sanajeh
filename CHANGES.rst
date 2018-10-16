@@ -2,6 +2,7 @@ Change Log
 ==========
 Version 1
 ----------
+- **0.08**: upgrade numpy
 - **0.07**: use wholebrain for T1
 - **0.06**: uuse name motor
 - **0.05**: added prf events fmri"
