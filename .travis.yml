@@ -18,7 +18,6 @@ before_install:
 install:
 
  # install requirements
- - pip install numpy scipy -U
  - pip install Cython
  - pip install wonambi nibabel bidso scikit-image
  - pip install -e git+https://github.com/kdesimone/popeye.git#egg=popeye
