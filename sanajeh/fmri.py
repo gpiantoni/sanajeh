@@ -40,7 +40,7 @@ def create_bold(bold_file, taskname, region_idx, timeseries):
     idx = where(brain.get_data() == 1)
     r = random.randn(idx[0].shape[0], t)
 
-    bold = zeros(brain.get_data().shape + (t, ))
+    bold = ones(brain.get_data().shape + (t, ))
     bold[act.get_data() == 1, :] = timeseries
     bold[idx] += r
 
