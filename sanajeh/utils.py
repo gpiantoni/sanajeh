@@ -4,6 +4,24 @@ from wonambi import Dataset
 import gzip
 
 
+def compare_hash_files(simulated_dir, hash_path):
+
+    md5_dict = read_hash(simulated_dir, hash_path)
+
+    for p in sorted(simulated_dir.rglob('*')):
+        if p.is_file():
+            filename = str(p.relative_to(simulated_dir))
+            if filename not in md5_dict:
+                raise ValueError(f'{filename} not in the md5 list')
+
+            elif compute_md5(p) != md5_dict.pop(filename):
+                x = p.open('rb').read(100)
+                raise ValueError(f'hash of {filename} does not match stored value\n{x}')
+
+    for filename in md5_dict.keys():
+        raise ValueError(f'{filename} in the md5 list but not on disk')
+
+
 def compute_md5(p):
     """Compute m5sum for a file. If the file is .gz (in the case of .nii.gz)
     then it reads the archived version (the .gz contains metadata that changes
