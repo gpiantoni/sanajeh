@@ -1,5 +1,5 @@
 from .paths import HASH_PATH, SIMULATED_DIR
-from .utils import compute_md5, read_hash
+from sanajeh.utils import compute_md5, read_hash
 
 
 def test_files_on_disk():
