@@ -7,7 +7,7 @@ from shutil import rmtree
 from subprocess import run
 from sys import exit
 
-from tests.utils import write_hash
+from .utils import write_hash
 from tests.paths import HASH_PATH
 
 
