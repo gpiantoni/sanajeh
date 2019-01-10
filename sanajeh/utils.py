@@ -4,13 +4,21 @@ from wonambi import Dataset
 import gzip
 
 
-def compare_hash_files(simulated_dir, hash_path):
+def compare_hash_files(simulated_dir, hash_path, skip=None):
+
+    if skip is None:
+        skip = []
 
     md5_dict = read_hash(simulated_dir, hash_path)
 
     for p in sorted(simulated_dir.rglob('*')):
         if p.is_file():
             filename = str(p.relative_to(simulated_dir))
+
+            if filename in skip:
+                md5_dict.pop(filename)
+                continue
+
             if filename not in md5_dict:
                 raise ValueError(f'{filename} not in the md5 list')
 
