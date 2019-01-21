@@ -4,7 +4,7 @@ from wonambi import Dataset
 import gzip
 
 
-def compare_hash_files(simulated_dir, hash_path, skip=None):
+def compare_hash_files(simulated_dir, hash_path, skip=None, skip_hidden=True):
 
     if skip is None:
         skip = []
@@ -13,6 +13,9 @@ def compare_hash_files(simulated_dir, hash_path, skip=None):
 
     for p in sorted(simulated_dir.rglob('*')):
         if p.is_file():
+            if skip_hidden and p.name.startswith('.'):
+                continue
+
             filename = str(p.relative_to(simulated_dir))
 
             if filename in skip:
@@ -23,8 +26,9 @@ def compare_hash_files(simulated_dir, hash_path, skip=None):
                 raise ValueError(f'{filename} not in the md5 list')
 
             elif compute_md5(p) != md5_dict.pop(filename):
-                x = p.open('rb').read(100)
-                raise ValueError(f'hash of {filename} does not match stored value\n{x}')
+                with p.open('rb') as f:
+                    x = f.read(100)
+                raise ValueError(f'hash of {filename} does not match stored value\nFile on disk starts with:\n{x}...')
 
     for filename in md5_dict.keys():
         raise ValueError(f'{filename} in the md5 list but not on disk')
