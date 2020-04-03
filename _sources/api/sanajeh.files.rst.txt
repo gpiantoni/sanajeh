@@ -1,0 +1,7 @@
+sanajeh.files module
+====================
+
+.. automodule:: sanajeh.files
+   :members:
+   :undoc-members:
+   :show-inheritance:

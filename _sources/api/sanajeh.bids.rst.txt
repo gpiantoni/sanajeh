@@ -1,0 +1,7 @@
+sanajeh.bids module
+===================
+
+.. automodule:: sanajeh.bids
+   :members:
+   :undoc-members:
+   :show-inheritance:

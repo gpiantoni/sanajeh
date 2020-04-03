@@ -1,0 +1,7 @@
+sanajeh.fmri module
+===================
+
+.. automodule:: sanajeh.fmri
+   :members:
+   :undoc-members:
+   :show-inheritance:

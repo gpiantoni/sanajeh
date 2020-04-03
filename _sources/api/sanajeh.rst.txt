@@ -1,0 +1,22 @@
+sanajeh package
+===============
+
+.. automodule:: sanajeh
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+
+   sanajeh.anat
+   sanajeh.bids
+   sanajeh.data
+   sanajeh.files
+   sanajeh.fmri
+   sanajeh.ieeg
+   sanajeh.pipeline
+   sanajeh.simulate_prf
+   sanajeh.utils

@@ -1,0 +1,7 @@
+sanajeh.ieeg module
+===================
+
+.. automodule:: sanajeh.ieeg
+   :members:
+   :undoc-members:
+   :show-inheritance:

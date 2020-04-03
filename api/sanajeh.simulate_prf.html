@@ -1,0 +1,276 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sanajeh.simulate_prf module &mdash; sanajeh 0.08 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="sanajeh.utils module" href="sanajeh.utils.html" />
+    <link rel="prev" title="sanajeh.pipeline module" href="sanajeh.pipeline.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> sanajeh
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.08
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">SANAJEH</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html#status">Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html#license">License</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html">sanajeh</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="sanajeh.html">sanajeh package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sanajeh.anat.html">sanajeh.anat module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sanajeh.bids.html">sanajeh.bids module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sanajeh.data.html">sanajeh.data module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sanajeh.files.html">sanajeh.files module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sanajeh.fmri.html">sanajeh.fmri module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sanajeh.ieeg.html">sanajeh.ieeg module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sanajeh.pipeline.html">sanajeh.pipeline module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">sanajeh.simulate_prf module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sanajeh.utils.html">sanajeh.utils module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change Log</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#version-1">Version 1</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../todo.html">TODO</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">sanajeh</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="modules.html">sanajeh</a> &raquo;</li>
+        
+          <li><a href="sanajeh.html">sanajeh package</a> &raquo;</li>
+        
+      <li>sanajeh.simulate_prf module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-sanajeh.simulate_prf">
+<span id="sanajeh-simulate-prf-module"></span><h1>sanajeh.simulate_prf module<a class="headerlink" href="#module-sanajeh.simulate_prf" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="sanajeh.simulate_prf.create_prf_events">
+<code class="sig-prename descclassname">sanajeh.simulate_prf.</code><code class="sig-name descname">create_prf_events</code><span class="sig-paren">(</span><em class="sig-param">tsv_file</em>, <em class="sig-param">n_events</em>, <em class="sig-param">dur</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sanajeh/simulate_prf.html#create_prf_events"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sanajeh.simulate_prf.create_prf_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="sanajeh.simulate_prf.generate_bars">
+<code class="sig-prename descclassname">sanajeh.simulate_prf.</code><code class="sig-name descname">generate_bars</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sanajeh/simulate_prf.html#generate_bars"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sanajeh.simulate_prf.generate_bars" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="sanajeh.simulate_prf.generate_model">
+<code class="sig-prename descclassname">sanajeh.simulate_prf.</code><code class="sig-name descname">generate_model</code><span class="sig-paren">(</span><em class="sig-param">stimulus</em>, <em class="sig-param">hrf_func</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sanajeh/simulate_prf.html#generate_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sanajeh.simulate_prf.generate_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="sanajeh.simulate_prf.generate_population_data">
+<code class="sig-prename descclassname">sanajeh.simulate_prf.</code><code class="sig-name descname">generate_population_data</code><span class="sig-paren">(</span><em class="sig-param">model</em>, <em class="sig-param">n_chan</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sanajeh/simulate_prf.html#generate_population_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sanajeh.simulate_prf.generate_population_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="sanajeh.simulate_prf.generate_stimulus">
+<code class="sig-prename descclassname">sanajeh.simulate_prf.</code><code class="sig-name descname">generate_stimulus</code><span class="sig-paren">(</span><em class="sig-param">bars</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sanajeh/simulate_prf.html#generate_stimulus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sanajeh.simulate_prf.generate_stimulus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="sanajeh.simulate_prf.nohrf">
+<code class="sig-prename descclassname">sanajeh.simulate_prf.</code><code class="sig-name descname">nohrf</code><span class="sig-paren">(</span><em class="sig-param">*args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sanajeh/simulate_prf.html#nohrf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sanajeh.simulate_prf.nohrf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="sanajeh.simulate_prf.simulate_bold_prf">
+<code class="sig-prename descclassname">sanajeh.simulate_prf.</code><code class="sig-name descname">simulate_bold_prf</code><span class="sig-paren">(</span><em class="sig-param">bids_dir</em>, <em class="sig-param">task_prf</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sanajeh/simulate_prf.html#simulate_bold_prf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sanajeh.simulate_prf.simulate_bold_prf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="sanajeh.simulate_prf.simulate_ieeg_prf">
+<code class="sig-prename descclassname">sanajeh.simulate_prf.</code><code class="sig-name descname">simulate_ieeg_prf</code><span class="sig-paren">(</span><em class="sig-param">bids_dir</em>, <em class="sig-param">task_prf</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sanajeh/simulate_prf.html#simulate_ieeg_prf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sanajeh.simulate_prf.simulate_ieeg_prf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sanajeh.utils.html" class="btn btn-neutral float-right" title="sanajeh.utils module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sanajeh.pipeline.html" class="btn btn-neutral float-left" title="sanajeh.pipeline module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018-2020, Gio Piantoni
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

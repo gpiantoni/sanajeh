@@ -1,0 +1,7 @@
+sanajeh.pipeline module
+=======================
+
+.. automodule:: sanajeh.pipeline
+   :members:
+   :undoc-members:
+   :show-inheritance:
